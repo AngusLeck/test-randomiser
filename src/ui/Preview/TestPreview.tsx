@@ -5,6 +5,7 @@ import { Col } from "../Lego";
 import { FunctionalComponent } from "../Lego/FunctionalComponent";
 import { Test } from "../Test";
 import { QuestionPreview } from "./QuestionPreview";
+import { PrintButton } from "./PrintButton";
 
 export const TestPreview: FunctionalComponent = ({ ...props }) => {
   const { watch } = useFormContext<Test>();
@@ -15,11 +16,9 @@ export const TestPreview: FunctionalComponent = ({ ...props }) => {
 
   return (
     <>
-      <input
-        type="button"
-        onClick={onPrint}
-        name="Print"
-        style={{ top: 60, right: 60, position: "absolute", width: 100 }}
+      <PrintButton
+        onPrint={onPrint}
+        style={{ top: 60, right: 60, position: "absolute" }}
       />
       <Col
         {...props}
