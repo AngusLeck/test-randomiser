@@ -1,11 +1,9 @@
-import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { FunctionalComponent } from "./Lego/FunctionalComponent";
-import { Test } from "./Test";
 import { TestForm } from "./Form/TestForm";
+import { Col, Row } from "./Lego";
+import { FunctionalComponent } from "./Lego/FunctionalComponent";
 import { TestPreview } from "./Preview/TestPreview";
-import { Row } from "./Lego/Row";
-import { Col } from "./Lego/Col";
+import { Test } from "./Test";
 
 export const TestFormWithPreview: FunctionalComponent = ({
   children,

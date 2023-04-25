@@ -29,11 +29,11 @@ export const QuestionPreview: FunctionalComponent<{ index: number }> = ({
     >
       <Row style={{ alignItems: "baseline" }}>
         <text style={{ marginRight: 8 }}>{`Q${index + 1}. `}</text>
-        <Latex>{parsedQuestion}</Latex>
+        <Latex minRuleThickness={0.05}>{parsedQuestion}</Latex>
       </Row>
       <p>
         <text style={{ marginRight: 8 }}>{`A${index + 1}. `}</text>
-        <Latex>{parsedAnswer}</Latex>
+        <Latex minRuleThickness={0.05}>{parsedAnswer}</Latex>
       </p>
     </Col>
   );

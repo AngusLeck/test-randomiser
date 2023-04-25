@@ -1,17 +1,18 @@
-import { ArgumentInput } from "../ArgumentInput";
-import { FunctionalComponent } from "../Lego/FunctionalComponent";
-import { Col, Row } from "../Lego";
-import { alphabet } from "./alphabet";
-import { useFormContext } from "react-hook-form";
-import { useEffect } from "react";
 import random from "random";
+import { useEffect } from "react";
+import { useFormContext } from "react-hook-form";
+import { ArgumentInput } from "../ArgumentInput";
+import { Col, Row } from "../Lego";
+import { FunctionalComponent } from "../Lego/FunctionalComponent";
+import { examples } from "./examples";
 
 export const Question: FunctionalComponent<{ questionNumber: number }> = ({
   questionNumber,
   ...props
 }) => {
   const paramNumber = 0;
-  const defaultSymbol = alphabet[paramNumber];
+  const { params, question, answer } =
+    examples[questionNumber % examples.length];
   const { watch, setValue } = useFormContext();
   const min = watch(
     `questions.[${questionNumber}].params.[${paramNumber}].range.min`
@@ -35,7 +36,7 @@ export const Question: FunctionalComponent<{ questionNumber: number }> = ({
           __type_name__: "string",
           name: `questions.[${questionNumber}].params.[${paramNumber}].name`,
           label: "param",
-          default: defaultSymbol,
+          default: params[0].name,
         }}
       />
       <ArgumentInput
@@ -44,7 +45,7 @@ export const Question: FunctionalComponent<{ questionNumber: number }> = ({
           __type_name__: "integer",
           name: `questions.[${questionNumber}].params.[${paramNumber}].range.min`,
           label: "min",
-          default: 2,
+          default: params[0].range.min,
         }}
       />
       <ArgumentInput
@@ -53,7 +54,7 @@ export const Question: FunctionalComponent<{ questionNumber: number }> = ({
           __type_name__: "integer",
           name: `questions.[${questionNumber}].params.[${paramNumber}].range.max`,
           label: "max",
-          default: 10,
+          default: params[0].range.max,
         }}
       />
       <Col>
@@ -63,7 +64,7 @@ export const Question: FunctionalComponent<{ questionNumber: number }> = ({
             __type_name__: "string",
             name: `questions.[${questionNumber}].question`,
             label: "question",
-            default: `If $x^2 - \`${defaultSymbol}**2\` = 0$ find all possible solutions $x$.`,
+            default: question,
           }}
         />
         <ArgumentInput
@@ -72,7 +73,7 @@ export const Question: FunctionalComponent<{ questionNumber: number }> = ({
             __type_name__: "string",
             name: `questions.[${questionNumber}].answer`,
             label: "answer",
-            default: "$x = \\pm `a`$",
+            default: answer,
           }}
         />
       </Col>
