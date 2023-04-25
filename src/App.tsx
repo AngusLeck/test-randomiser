@@ -3,7 +3,7 @@ import { TestFormWithPreview } from "./ui";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{ overflow: "hidden", background: "green" }}>
       {/* <head>
         <link
           href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css"
@@ -33,9 +33,9 @@ function App() {
           }}
         />
       </head>
-      <header className="App-header">
+      <body className="App-header">
         <TestFormWithPreview />
-      </header>
+      </body>
     </div>
   );
 }

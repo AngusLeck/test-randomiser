@@ -19,24 +19,23 @@ export function ArgumentInput<T extends ArgumentType>({
   const Input = ArgumentInputComponent(argument.__type_name__);
 
   return (
-    <div {...props}>
-      <Controller
-        control={control}
-        name={argument.name}
-        defaultValue={argument.default}
-        rules={{ required: "Required", validate: argument.validate }}
-        render={({ field: { onChange, value }, fieldState: { error } }) => {
-          return (
-            <Input
-              onChange={onChange}
-              value={value}
-              label={argument.label}
-              error={error?.message}
-            />
-          );
-        }}
-      />
-    </div>
+    <Controller
+      control={control}
+      name={argument.name}
+      defaultValue={argument.default}
+      rules={{ required: "Required", validate: argument.validate }}
+      render={({ field: { onChange, value }, fieldState: { error } }) => {
+        return (
+          <Input
+            {...props}
+            onChange={onChange}
+            value={value}
+            label={argument.label}
+            error={error?.message}
+          />
+        );
+      }}
+    />
   );
 }
 

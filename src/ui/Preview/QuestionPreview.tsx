@@ -24,17 +24,39 @@ export const QuestionPreview: FunctionalComponent<{ index: number }> = ({
       {...props}
       style={{
         alignItems: "baseline",
-        color: "black",
+        width: "100%",
       }}
     >
       <Row style={{ alignItems: "baseline" }}>
         <text style={{ marginRight: 8 }}>{`Q${index + 1}. `}</text>
         <Latex minRuleThickness={0.05}>{parsedQuestion}</Latex>
       </Row>
+      <Box />
       <p>
         <text style={{ marginRight: 8 }}>{`A${index + 1}. `}</text>
         <Latex minRuleThickness={0.05}>{parsedAnswer}</Latex>
       </p>
     </Col>
+  );
+};
+
+const Box: FunctionalComponent = ({ children, style, ...props }) => {
+  return (
+    <Row style={{ width: "100%" }}>
+      <div
+        {...props}
+        style={{
+          borderWidth: 2,
+          borderStyle: "solid",
+          borderColor: "black",
+          marginTop: 30,
+          flex: 1,
+          height: 300,
+          ...style,
+        }}
+      >
+        {children}
+      </div>
+    </Row>
   );
 };

@@ -34,10 +34,15 @@ export const TextInput: FunctionalComponent<TextInputProps> = ({
       >
         {label}
       </div>
-      <input
-        type="text"
+      <textarea
         value={value ?? ""}
-        style={{ padding: 4, borderColor: error ? "red" : undefined }}
+        style={{
+          resize: style?.resize ?? "vertical",
+          padding: 4,
+          height: 18,
+          maxWidth: "100%",
+          borderColor: error ? "red" : undefined,
+        }}
         onChange={({ target: { value } }) => onChange(value)}
       />
       <div
