@@ -1,26 +1,17 @@
 import { FunctionalComponent } from "../Lego/FunctionalComponent";
 
-interface IntegerInputProps {
-  value: number;
-  onChange: (value: number | null) => void;
+interface TextInputProps {
+  value: string;
+  onChange: (value: string | null) => void;
   label: string;
   error?: string;
 }
 
-interface NumberInputProps extends IntegerInputProps {
-  integerOnly?: boolean;
-}
-
-export const IntegerInput: FunctionalComponent<IntegerInputProps> = (props) => (
-  <NumberInput {...props} integerOnly></NumberInput>
-);
-
-export const NumberInput: FunctionalComponent<NumberInputProps> = ({
+export const TextInput: FunctionalComponent<TextInputProps> = ({
   value,
   onChange,
   label,
   error,
-  integerOnly = false,
   style,
   ...props
 }) => {
@@ -31,7 +22,6 @@ export const NumberInput: FunctionalComponent<NumberInputProps> = ({
         display: "flex",
         flexDirection: "column",
         marginRight: 12,
-        maxWidth: 200,
         ...style,
       }}
     >
@@ -45,15 +35,10 @@ export const NumberInput: FunctionalComponent<NumberInputProps> = ({
         {label}
       </div>
       <input
-        type="number"
+        type="text"
         value={value ?? ""}
         style={{ padding: 4, borderColor: error ? "red" : undefined }}
-        onKeyDown={(e) => {
-          if (integerOnly && e.key.length === 1 && e.key.match(/\D/g)?.length) {
-            e.preventDefault();
-          }
-        }}
-        onChange={({ target: { value } }) => onChange(numberFromString(value))}
+        onChange={({ target: { value } }) => onChange(value)}
       />
       <div
         style={{
@@ -69,9 +54,3 @@ export const NumberInput: FunctionalComponent<NumberInputProps> = ({
     </div>
   );
 };
-
-function numberFromString(input: string | null): number | null {
-  if (!input) return null;
-
-  return Number(input);
-}

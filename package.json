@@ -1,7 +1,7 @@
 {
-  "name": "react-python",
+  "name": "test-randomiser",
   "version": "0.1.0",
-  "homepage": "https://angusleck.github.io/react-python",
+  "homepage": "https://angusleck.github.io/test-randomiser",
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -11,11 +11,17 @@
     "@types/node": "^16.18.23",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
+    "@types/react-latex": "^2.0.0",
+    "calc-ts": "^0.1.1",
+    "random": "^4.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
+    "react-latex": "^2.0.0",
     "react-py": "^1.8.5",
     "react-scripts": "5.0.1",
+    "react-to-print": "^2.14.12",
+    "ts-color-class": "^0.10.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
